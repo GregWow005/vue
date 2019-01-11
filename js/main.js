@@ -57,6 +57,13 @@ Vue.component('radio-button', {
     }
 });
 
+Vue.component('check-box', {
+    methods: {
+        selectCheck(){
+            console.log('COMMENT: ', event.target.value,event.target.checked);
+        }
+    }
+});
 new Vue({
     el : '.vue-main',
     data : {
