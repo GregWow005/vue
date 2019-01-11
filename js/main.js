@@ -64,6 +64,15 @@ Vue.component('check-box', {
         }
     }
 });
+
+Vue.component('input-text',{
+    methods:{
+        getInputText(){
+            console.log('COMMENT: ', event.target.value);
+        }
+    }
+})
+
 new Vue({
     el : '.vue-main',
     data : {

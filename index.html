@@ -50,6 +50,13 @@
                 <input type="checkbox" name="chack" value="R" @change="selectCheck" />
             </section>
         </check-box>
+        <input-text inline-template>
+            <section>
+                <h6>Input Text</h6>
+                <label>Text</label>
+                <input type="text" name="my_text" value="Texto de prueba" @input="getInputText" >
+            </section>
+        </input-text>
         <pre>{{$data}}</pre>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
