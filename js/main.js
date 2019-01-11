@@ -66,8 +66,41 @@ Vue.component('check-box', {
 });
 
 Vue.component('input-text',{
+    mounted() {
+        // Here 'this' is input-range component
+        this.$root.$on('clickedSomething', (value,status) => {
+            console.log('EUREKA! ',value,status);
+            this.setInputText(value);
+        });
+    },
     methods:{
         getInputText(){
+            console.log('COMMENT: ', event.target.value);
+        },
+        setInputText(value){
+            this.input_value = value;
+        }
+    },
+    data() {
+        return {
+            input_value : 'Ahora vale cero',
+        }
+    },
+});
+
+Vue.component('input-range', {
+    methods: {
+        getValueRange(){
+            console.log('COMMENT: ', event.target.value);
+            this.$root.$emit('clickedSomething',event.target.value,'DONE');
+        },
+        
+    },
+});
+
+Vue.component('datalist-component',{
+    methods:{
+        getDataListValue(){
             console.log('COMMENT: ', event.target.value);
         }
     }
@@ -76,7 +109,8 @@ Vue.component('input-text',{
 new Vue({
     el : '.vue-main',
     data : {
-        mensaje : ''
+        mensaje : '',
+        text_value : 0
     }
 });
 

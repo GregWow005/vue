@@ -54,9 +54,29 @@
             <section>
                 <h6>Input Text</h6>
                 <label>Text</label>
-                <input type="text" name="my_text" value="Texto de prueba" @input="getInputText" >
+                <input type="text" name="my_text" :value="input_value" @input="getInputText" >
             </section>
         </input-text>
+        <input-range inline-template>
+            <section>
+                <h6>Range</h6>
+                <input type="range" min="0" max="100" @change="getValueRange" />
+            </section>
+        </input-range>
+        <datalist-component inline-template>
+            <section>
+                <h6>Data List</h6>
+                <label>Browsers</label>
+                <input list="browsers" @change="getDataListValue">
+                <datalist id="browsers" >
+                    <option value="Internet Explorer">
+                    <option value="Firefox">
+                    <option value="Chrome">
+                    <option value="Opera">
+                    <option value="Safari">
+                </datalist>
+            </section>
+        </datalist-component>
         <pre>{{$data}}</pre>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
