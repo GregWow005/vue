@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <main class="vue-main">
+        <!-- <h1>{{mensaje}}</h1>
+        <input type="text" v-model="mensaje"/> -->
+        <elegir-ganador inline-template>
+            <div>
+                <h5>El ganador es: {{ganador}}</h5>
+                <h5>Participantes</h5>
+                <ul>
+                    <li v-for="user in users">{{user}}</li>
+                </ul>
+                <br>
+                <button @click="elegirGanador">Elegir Ganador</button>
+            </div>
+        </elegir-ganador>
+        <desplegable inline-template>
+            <section>
+                <h6>Desplegables</h6>
+                <select @change="selectNumber" >
+                    <option  v-for="(value, number, index) in numbers" :value="value">{{value}}</option>
+                </select>
+                <select @change="selectNumber" >
+                    <option  v-for="(value, name, index) in names" :value="index">{{value}}</option>
+                </select>
+            </section>
+        </desplegable>
+        <radio-button inline-template>
+            <section>
+                <h6>Radio Button</h6>
+                <label>Blanco</label>
+                <input type="radio" name="radio" value="B" @change="selectRadio" />
+                <label>Negro</label>
+                <input type="radio" name="radio" value="N" @change="selectRadio" />
+            </section>
+        </radio-button>
+        <pre>{{$data}}</pre>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
