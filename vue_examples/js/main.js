@@ -26,7 +26,6 @@ Vue.component('elegir-ganador', {
     },
 });
 
-
 Vue.component('desplegable', {
     mounted() {
         
