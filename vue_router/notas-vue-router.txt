@@ -1,0 +1,26 @@
+Vue Router
+
+main.js
+- Importamos libreria vue-Router
+- Importamos namespace (routes.js) que contiene las rutas
+        routes.js
+        - Importamos los componentes que se van a usar en las rutas 
+        - Creamos la constante que contiene las rutas ->
+            export const  routes = [
+                { path : "/", component: Home},
+                { path : "/contacto", component: Contacto}
+            ];
+
+- Indicamos que podemos usar vue-router -> Vue.use(VueRouter);
+- Guardamos en una constante las rutas ->
+    const router = new VueRouter({
+        routes : routes
+    });
+- Añadimos en la instacia Vue la constante que contiene las rutas para poder utilzarla en todos los puntos instacia Vue
+
+App.vue
+- Añadimos el elmento, router-link, que se encarga de la navegación ->
+    <router-view></router-view>
+- Añadimos los links que queramos mostrar con las etiquetas router-link ->
+        <router-link to="/contacto" active-class="active">Contacto</router-link>
+        <router-view></router-view>
