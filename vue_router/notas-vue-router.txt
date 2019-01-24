@@ -24,3 +24,10 @@ App.vue
 - Añadimos los links que queramos mostrar con las etiquetas router-link ->
         <router-link to="/contacto" active-class="active">Contacto</router-link>
         <router-view></router-view>
+
+Named routes
+- routes.js 
+    Añadir un atributo name al objeto -> name:'bio';
+    Este atributo name ponerlo en los children - Revisar esta parte bien que es delicada
+    Al tag router-link al atributo dinámico to pasar un objeto con el nombre y los parametros que pudiera recibir -> <router-link :to="{name: 'foto', params:{id: $route.params.id}}">Foto</router-link>
+    
