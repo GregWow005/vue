@@ -3,6 +3,7 @@ import Equipo from "./components/Equipo.vue";
 import User from "./components/User.vue";
 import UserBio from "./components/UserBio.vue";
 import UserFoto from "./components/UserFoto.vue";
+import Contacto from "./components/Contacto.vue";
 
 /* export const routes = [
     { path:"/", component:Home },
@@ -23,4 +24,7 @@ export const routes = [
             bio : UserBio,
         }, name:'equipo'}
     ]},
+    //{path:"/contacto/:newsletter", component: Contacto, name: 'contacto'}
+    //{path:"/contacto/:newsletter", component: Contacto, name: 'contacto', props:true}
+    {path:"/contacto/", component: Contacto, name: 'contacto', props:{newsletter:false}}
 ];
