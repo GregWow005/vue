@@ -9,6 +9,7 @@
 export default {
   data () {
     return {
+        text_task : '',
         /**
          *  JSON  task -> {id : 1, text:'', status:''}
          *  status -> 'completed', 'incompleted'
@@ -17,6 +18,11 @@ export default {
             {id : 1, text:'T1', status:'C'},
             {id : 2, text:'T2', status:'I'}
         ]
+    }
+    computed: {
+        createTask = () => {
+            
+        }
     }
   }
 }
