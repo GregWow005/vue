@@ -1,0 +1,21 @@
+TODO LIST
+
+Input para recoger los strings --- Component Input
+Evento enter que crea una tarea
+
+Botón marcar tarea completada
+Botón eliminar tarea
+Filtros
+Botón seleccionar tareas completadas
+Botón seleccionar tareas no completadas
+Botón mostrar todas las tareas
+
+Componentes
+Componente Input
+Componente Lista
+Componente Filtros
+
+
+DATOS
+Array tareas 
+JSON  tarea -> {id : 1, text:'', status:''}
