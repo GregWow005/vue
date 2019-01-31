@@ -3,7 +3,7 @@
         <h1>Home</h1>
         <!-- <router-link :to="'/equipo/' + id">Equipo</router-link> -->
         <router-link :to="{name: 'equipo', params:{id: id}}">Equipo</router-link>
-        <router-link :to="{name: 'contacto', params:{newsletter: true}}">Contacto</router-link>
+        <router-link :to="{name: 'contacto'}">Contacto</router-link>
     </div>
 </template>
 <script>
