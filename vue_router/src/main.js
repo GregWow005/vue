@@ -7,7 +7,8 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
     mode: 'history',
-    routes
+    routes,
+    path : 
 });
 
 new Vue({
