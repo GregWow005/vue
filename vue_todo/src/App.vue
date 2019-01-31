@@ -12,8 +12,7 @@ export default {
   name: 'app',
   components : {TodoList,TodoInput},
   data () {
-    return {
-    }
+       
   }
 }
 </script>
