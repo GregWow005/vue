@@ -1,7 +1,12 @@
 <template>
-    <section :createTaskInput="createTask">
-        <ul class="js-todo-list" v-for="task in tasks">
-            <li>{{task.text}}</li>
+    <section>
+        <ul class="todo-list" v-for="task in tasks">
+            <li>
+                <div class="view">
+                    <input type="text" class="toggle">
+                    <label for="">{{task.text}}</label>
+                </div>
+            </li>
         </ul>
     </section>
 </template>
@@ -20,11 +25,13 @@ export default {
                 {id : 2, text:'T2', status:'I'}
             ]
         }
-        methods: {
-            createTask = (value) => {
-                this.tasks.push(value);
-            }
-        }
+    },
+    created(){
+        this.$eventbus.$on('addTask',(text) =>{
+            //console.log('EVENTBUS ADD: ', typeof precio);
+            var task = {id : 1, text: text, status:'C'};
+            this.tasks.push(task);
+        });
     }
 }
 </script>

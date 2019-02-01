@@ -1,6 +1,6 @@
 <template>
     <section>
-        <input type="text" :value="input_value" @input="getText" >
+        <input type="text" class="new-todo" :value="input_value"  @keyup="getText">
     </section>
 </template>
 <script>
@@ -11,20 +11,15 @@ export default {
         }
     },
     methods: {
-        getText : function (){
-            console.log('COMMENT: ', event.target.value);
+        getText(event){
+            console.log('keyCode: ', event.keyCode);
             this.input_value = event.target.value;
-            if(event.target.value === "c"){
-                var task = {id : 1, text: event.target.value, status:'C'};
-                this.$emit('CreateTaskInput', task);
+            if(event.keyCode === 13){
+                this.$eventbus.$emit('addTask',event.target.value);
+                this.input_value = "";
             }
         }
-    },
-    computed: {
-        seText : function(value){
-            this.input_value = value;
-            console.log("VALUE ", this.input_value);
-        }
-    },
+        
+    }
 }
 </script>
