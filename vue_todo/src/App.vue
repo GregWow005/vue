@@ -2,15 +2,17 @@
   <section id="app" class="todoapp">
         <todo-input></todo-input>
         <todo-list></todo-list>
+        <todo-filter></todo-filter>
   </section>
 </template>
 
 <script>
 import TodoList from './components/TodoList.vue';
 import TodoInput from './components/TodoInput.vue';
+import TodoFilter from './components/TodoFilter.vue';
 export default {
   name: 'app',
-  components : {TodoList,TodoInput},
+  components : {TodoList,TodoInput,TodoFilter},
   data () {
        return {
        }

@@ -12,7 +12,7 @@ export default {
     },
     methods: {
         getText(event){
-            console.log('keyCode: ', event.keyCode);
+            //console.log('keyCode: ', event.keyCode);
             this.input_value = event.target.value;
             if(event.keyCode === 13){
                 this.$eventbus.$emit('addTask',event.target.value);
