@@ -1,11 +1,18 @@
 <template>
     <section>
         <ul class="todo-list" >
-            <li v-for="task in tasks" v-if="task.visible" :class="task.status" :id="task.id">
+            <!-- <li v-for="task in tasks" v-if="task.visible" :class="task.status" :id="task.id">
                 <div class="view">
                     <input type="checkbox" :checked="task.checked" class="toggle" @click="setCompletedTask">
                     <label for="">{{task.text}}</label>
                     <button class="destroy" @click="removeTask"></button>
+                </div>
+            </li> -->
+            <li v-for="task in tasks">
+                <div class="view">
+                    <input type="checkbox" :checked="task.checked" class="toggle">
+                    <label for="">{{task.text}}</label>
+                    <button class="destroy"></button>
                 </div>
             </li>
         </ul>

@@ -1,12 +1,19 @@
 <template>
     <footer class="footer">
-        <span class="todo-count">{{items_left}} Items left</span>
+        <!-- <span class="todo-count">{{items_left}} Items left</span>
         <ul class="filters">
             <li><a href="#/" class="selected" @click="getFilterTasks" data-filter="all">All</a></li>
             <li><a href="#/" @click="getFilterTasks" data-filter="active">Active</a></li>
             <li><a href="#/" @click="getFilterTasks" data-filter="completed">Completed</a></li>
         </ul>
-        <button class="clear-completed" @click="removeCompletedTask" v-show="items_complete > 0">Clear completed</button>
+        <button class="clear-completed" @click="removeCompletedTask" v-show="items_complete > 0">Clear completed</button> -->
+        <span class="todo-count">{{items_left}} Items left</span>
+        <ul class="filters">
+            <li><a href="#/" class="selected"  data-filter="all">All</a></li>
+            <li><a href="#/"  data-filter="active">Active</a></li>
+            <li><a href="#/"  data-filter="completed">Completed</a></li>
+        </ul>
+        <button class="clear-completed" v-show="items_complete > 0">Clear completed</button>
     </footer>
 </template>
 <script>

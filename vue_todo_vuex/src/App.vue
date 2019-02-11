@@ -23,7 +23,7 @@ export default {
 
 
 <style>
-/* CSS STYLES ARE FROM http://todomvc.com */
+/*  CSS STYLES ARE FROM http://todomvc.com */
 html,
 body {
 	margin: 0;

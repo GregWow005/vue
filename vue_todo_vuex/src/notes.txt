@@ -1,0 +1,45 @@
+Similar to the Vue Instance
+
+const app = new Vue({
+    data : {},
+    // Update data
+    methods : {}
+    // Can access our data
+    computed : {}
+})
+
+
+const = new Vuw.Store({
+    state : {},
+    // Update de Vuex state
+    actions : {},
+    // Can access our state
+    getters : {},
+    // Mutations are used to commit and track state changes.
+    // actions call mutations which Update our state directly
+    mutations : {}
+})
+
+---------------------------------------
+
+How to use
+- main.js
+    - Importar el archivo 'store.js' como namespace
+    - Añadirlo como propiedad de la instancia Vue
+        -> new Vue({
+            el: '#app',
+            store     : store,
+            render: h => h(App)
+            })
+- Crear archivo en /store/store.js
+    - store.js  
+        - importar vue, vuex y usarlo
+        ->  import Vue from 'vue';
+            import Vuex from 'vuex';
+            Vue.use(Vuex);
+    - Exportar la constante store para que pueda ser usada por toda la instancia De Vue
+        -> export const store = new Vuex.Store({
+                state : {
+                    cantidad : 0
+                }
+            });
