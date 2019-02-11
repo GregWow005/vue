@@ -1,29 +1,4 @@
-<template>
-  <section id="app" class="todoapp">
-        <h1>todos</h1>
-        <todo-input></todo-input>
-        <todo-list></todo-list>
-        <todo-filter></todo-filter>
-  </section>
-</template>
-
-<script>
-import TodoList from './components/TodoList.vue';
-import TodoInput from './components/TodoInput.vue';
-import TodoFilter from './components/TodoFilter.vue';
-export default {
-  name: 'app',
-  components : {TodoList,TodoInput,TodoFilter},
-  data () {
-       return {
-       }
-  }
-}
-</script>
-
-
-<style>
-/* THIS CSS STYLES ARE FROM http://todomvc.com */
+/**/
 html,
 body {
 	margin: 0;
@@ -401,4 +376,3 @@ html .clear-completed:active {
 	}
 }
 
-</style>
