@@ -6,6 +6,6 @@ Vue.prototype.$eventbus  = new Vue();
 
 new Vue({
   el: '#app',
-  store     : store,
+  store,
   render: h => h(App)
 })

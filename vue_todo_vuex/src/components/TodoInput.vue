@@ -1,15 +1,18 @@
 <template>
     <section>
+        <h6>{{task_name}}</h6>
         <input type="text" placeholder="What needs to be done?" class="new-todo" :value="input_value"  @keyup="getText">
     </section>
 </template>
 <script>
+import {mapState} from 'vuex';
 export default {
     data(){
         return {
             input_value : "",
         }
     },
+    computed: mapState(["task_name"]),
     methods: {
         // get text from input and emit event for create task to List component
         getText(event){

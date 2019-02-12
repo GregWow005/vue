@@ -43,3 +43,38 @@ How to use
                     cantidad : 0
                 }
             });
+
+MAPSTATE
+-Tiene acceso al estado del store (VIP - Importar el objeto 'store' en la instacia principal)
+-Como usarlo?
+    - En el componente a usar
+        - Importar el mapState de Vuex.
+            -> import {mapState} from 'vuex'
+        - las computed properties se igualan al objeto mapState.
+            -> computed : mapState(['propiedad_store'])
+        - Usar la propiedad_store en alguna parte del componente.
+
+MAPGETTERS
+- Se usa para realizar 'cálculos' sobre el almacén de datos en el 'store'.
+- Son como computed properties para los 'stores'.
+- Los getters devuelve resultados basados en propiedades del estado
+- Cómo usarlo?
+    - En el componente a usar
+        - Importar el MaspGetters de vuex
+            -> import {mapGetters} from 'vuex'
+        - Las computed properties se igualan al objeto mapState.
+            -> computed : mapGetters(['propiedad_store'])
+        - Usar la propiedad_store en alguna parte del componente
+
+MUTATIONS
+- 'Setters' que modifican los datos del store
+- Se implementan con el método 'commit' para que dejen un log de como estás modificando los datos
+- Las mutaciones deben ser síncronas. Centraliza en cada momento cómo está el estado.
+ACTIONS
+- En lugar de mutar el estado, las acctiones commitean las mutations
+- 
+
+NOTA
+Para usar multiples 'Maps':
+->      ...mapGetters(['doneTodos']),
+        ...mapState(["task_name"])

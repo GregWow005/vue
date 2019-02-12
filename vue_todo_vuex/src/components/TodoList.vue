@@ -8,7 +8,8 @@
                     <button class="destroy" @click="removeTask"></button>
                 </div>
             </li> -->
-            <li v-for="task in tasks">
+            
+            <li v-for="task in tasks_todo">
                 <div class="view">
                     <input type="checkbox" :checked="task.checked" class="toggle">
                     <label for="">{{task.text}}</label>
@@ -22,7 +23,7 @@
     </section>
 </template>
 <script>
-
+import {mapState} from 'vuex';
 export default {
     data () {
         return {
@@ -35,6 +36,7 @@ export default {
             tasks: []
         }
     },
+    computed: mapState(['tasks_todo']),
     methods: {
         removeTask(event){
             /**

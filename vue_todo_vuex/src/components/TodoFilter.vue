@@ -7,8 +7,9 @@
             <li><a href="#/" @click="getFilterTasks" data-filter="completed">Completed</a></li>
         </ul>
         <button class="clear-completed" @click="removeCompletedTask" v-show="items_complete > 0">Clear completed</button> -->
-        <span class="todo-count">{{items_left}} Items left</span>
+        <span class="todo-count">{{doneTodos}} Items left</span>
         <ul class="filters">
+        <span>{{task_name}}</span><span @click="setTaskName"> Set Task Name </span>
             <li><a href="#/" class="selected"  data-filter="all">All</a></li>
             <li><a href="#/"  data-filter="active">Active</a></li>
             <li><a href="#/"  data-filter="completed">Completed</a></li>
@@ -17,12 +18,18 @@
     </footer>
 </template>
 <script>
+import {mapState} from 'vuex';
+import {mapGetters, mapMutations} from 'vuex';
 export default {
     data(){
         return {
             items_left : 0,
             items_complete : 0
         }
+    },
+    computed: {
+        ...mapGetters(['doneTodos']),
+        ...mapState(["task_name"]),
     },
     created(){
         // Listen event from List component to update task
@@ -31,7 +38,8 @@ export default {
             this.items_complete = items_complete;
         });
     },
-    methods: {
+     methods: {
+        ...mapMutations(["setTaskName"]),
         // get Filter and emit evento to set Filter in Filter component
         getFilterTasks(event){
             var parent = event.target.closest('ul.filters');
@@ -43,6 +51,6 @@ export default {
         removeCompletedTask(){
             this.$eventbus.$emit('removeCompletedTask');
         }
-    },
+    }, 
 }
 </script>
