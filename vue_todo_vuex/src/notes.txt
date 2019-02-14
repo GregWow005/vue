@@ -60,7 +60,7 @@ MAPGETTERS
 - Los getters devuelve resultados basados en propiedades del estado
 - Cómo usarlo?
     - En el componente a usar
-        - Importar el MaspGetters de vuex
+        - Importar el mapGetters de vuex
             -> import {mapGetters} from 'vuex'
         - Las computed properties se igualan al objeto mapState.
             -> computed : mapGetters(['propiedad_store'])
@@ -70,9 +70,16 @@ MUTATIONS
 - 'Setters' que modifican los datos del store
 - Se implementan con el método 'commit' para que dejen un log de como estás modificando los datos
 - Las mutaciones deben ser síncronas. Centraliza en cada momento cómo está el estado.
+- ¿Cómo usarlo?
+    - En el componente a usar
+        - Importar el mapMutations de vuex
+            -> import {mapMutations} from 'vuex'
+        - Los 'methods' se igualan al objeto mapMutations
+            -> methods: mapMutations(['propiedad_store'])
+        - Usar la propiedad_store - Método de las mutations
 ACTIONS
 - En lugar de mutar el estado, las acctiones commitean las mutations
-- 
+- Las acciones son asíncronas
 
 NOTA
 Para usar multiples 'Maps':

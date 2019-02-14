@@ -19,5 +19,12 @@ export const store = new Vuex.Store({
     },
     mutations : {
         setTaskName : (state) => state.task_name = 'Soy Nueva',
+    },
+    actions : {
+        setTaskNameAsync : (context) => {
+            setTimeout(() => {
+                context.commit('setTaskName');
+            }, 1500);
+        }
     }
 });

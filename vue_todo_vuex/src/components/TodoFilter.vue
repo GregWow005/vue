@@ -9,7 +9,7 @@
         <button class="clear-completed" @click="removeCompletedTask" v-show="items_complete > 0">Clear completed</button> -->
         <span class="todo-count">{{doneTodos}} Items left</span>
         <ul class="filters">
-        <span>{{task_name}}</span><span @click="setTaskName"> Set Task Name </span>
+        <span>{{task_name}}</span><span @click="setTaskName"> Name </span><span @click="setTaskNameAsync">Set</span>
             <li><a href="#/" class="selected"  data-filter="all">All</a></li>
             <li><a href="#/"  data-filter="active">Active</a></li>
             <li><a href="#/"  data-filter="completed">Completed</a></li>
@@ -19,7 +19,7 @@
 </template>
 <script>
 import {mapState} from 'vuex';
-import {mapGetters, mapMutations} from 'vuex';
+import {mapGetters, mapMutations,mapActions} from 'vuex';
 export default {
     data(){
         return {
@@ -40,6 +40,7 @@ export default {
     },
      methods: {
         ...mapMutations(["setTaskName"]),
+        ...mapActions(["setTaskNameAsync"]),
         // get Filter and emit evento to set Filter in Filter component
         getFilterTasks(event){
             var parent = event.target.closest('ul.filters');
