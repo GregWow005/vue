@@ -39,11 +39,15 @@ export default {
         });
     },
     methods: {
+        ...mapMutations(['getTasksFiltered']),
         // get Filter and emit evento to set Filter in Filter component
         getFilterTasks(event){
             var parent = event.target.closest('ul.filters');
             parent.querySelector('li a.selected').classList.remove('selected');
             event.target.classList.add('selected');
+            this.getTasksFiltered({
+                filter : event.target.dataset.filter
+            })
             //this.$eventbus.$emit('setFilterTasks',event.target.dataset.filter);
         },
         // remove task  and emit event to remove complete task in Filte component

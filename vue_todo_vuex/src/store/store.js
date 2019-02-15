@@ -34,6 +34,9 @@ export const store = new Vuex.Store({
             let task_index = state.tasks_todo.findIndex(task => task.id == payload.task_id);
             state.tasks_todo[task_index].checked = payload.checked;
             state.tasks_todo[task_index].status = payload.task_status;
+        },
+        getTasksFiltered : (state, payload) =>{
+            console.log('payload', payload);
         }
     },
     actions : {
