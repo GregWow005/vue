@@ -9,7 +9,7 @@
                 </div>
             </li> -->
             
-            <li v-for="task in tasks_todo" :class="task.status"  :id="task.id">
+            <li v-for="task in task_todo" :class="task.status"  :id="task.id">
                 <div class="view">
                     <input type="checkbox" :checked="task.checked" class="toggle" @click="checkedTask">
                     <label for="">{{task.text}}</label>
@@ -36,7 +36,7 @@ export default {
             tasks: []
         }
     },
-    computed: mapState(['tasks_todo']),
+    computed: mapState(['task_todo']),
     methods: {
         ...mapMutations(['mutationUpdateTaskStatus','mutationRemoveTask']),
         checkedTask(event){

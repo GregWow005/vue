@@ -24,7 +24,7 @@ export default {
                 })
                 this.$store.state.texto = event.target.value;
                 this.input_value = "";
-                console.log('State: ', this.$store.state.texto);
+                //console.log('State: ', this.$store.state.texto);
             }
         }
         

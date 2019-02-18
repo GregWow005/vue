@@ -14,7 +14,7 @@
             <li><a href="#/"  data-filter="active" @click="getFilterTasks">Active</a></li>
             <li><a href="#/"  data-filter="completed" @click="getFilterTasks">Completed</a></li>
         </ul>
-        <button class="clear-completed" v-show="items_complete > 0">Clear completed</button>
+        <button class="clear-completed" @click="removeCompletedTasks" v-if="doneTask > 0">Clear completed</button>
     </footer>
 </template>
 <script>
@@ -28,7 +28,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['doneTodos']),
+        ...mapGetters(['doneTodos','doneTask']),
         ...mapState(["task_name"]),
     },
     created(){
@@ -39,7 +39,10 @@ export default {
         });
     },
     methods: {
-        ...mapMutations(['getTasksFiltered']),
+        ...mapMutations(['getTasksFiltered','mutationsRemoveCompletedTasks']),
+        removeCompletedTasks(event){
+            this.mutationsRemoveCompletedTasks({});
+        },
         // get Filter and emit evento to set Filter in Filter component
         getFilterTasks(event){
             var parent = event.target.closest('ul.filters');
