@@ -1,6 +1,5 @@
 <template>
   <div>
-        <h1>{{saludo}}</h1>
         <table>
             <thead>
                 <tr>
@@ -9,8 +8,8 @@
             </thead>
             <tbody>
                 <tr v-for="user in users">
-                    <td>{{user.name}}</td>
-                    <td>{{user.power}}</td>
+                    <td>{{user.name.first + ' ' +  user.name.last}}</td>
+                    <td>{{user.email}}</td>
                 </tr>
             </tbody>
         </table>
@@ -18,13 +17,23 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import {mapState,mapActions} from 'vuex';
 export default {
   name: "HelloWorld",
   props: {
     msg: String
   },
-  computed : mapState(['saludo','columns','users'])
+  computed : mapState(['saludo','columns','users']),
+  methods: {
+    ...mapActions(['getUsers']),
+    createdComponent(){
+        this.getUsers();
+    },
+  },
+  mounted() {
+    console.log('CREATED: ');
+    this.createdComponent();
+  }
 };
 </script>
 

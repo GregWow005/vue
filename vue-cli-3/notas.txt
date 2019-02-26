@@ -46,10 +46,10 @@ Funciones
     - Search
 
         let men = [
-            { name: 'Chuck Norris', power: Infinity },
-            { name: 'Bruce Lee', power: 9000 },
-            { name: 'Jackie Chan', power: 7000 },
-            { name: 'Jet Li', power: 8000 }
+            { name: 'Chuck Norris', email: Infinity },
+            { name: 'Bruce Lee', email: 9000 },
+            { name: 'Jackie Chan', email: 7000 },
+            { name: 'Jet Li', email: 8000 }
         ]
 
         let filter_men = [];
@@ -68,12 +68,12 @@ Funciones
     - Ordenación
         By name
         men.sort((a,b) => ( a.name > b.name ) ? 1 : -1 );
-        By power
-        men.sort((a,b) => ( a.power > b.power ) ? 1 : -1 );
+        By email
+        men.sort((a,b) => ( a.email > b.email ) ? 1 : -1 );
 
         var  comparasion_factor;
         var  order = 'desc';
-        comparasion = 'power';
+        comparasion = 'email';
 
         if(order === 'asc'){
             comparasion_factor = 1;
@@ -86,9 +86,9 @@ Funciones
             men.sort((a,b) => ( a.name > b.name ) ? comparasion_factor : -1*comparasion_factor );
         } else {
             console.log(comparasion,comparasion_factor);
-            men.sort((a,b) => ( a.power > b.power ) ? comparasion_factor : -1*comparasion_factor );
+            men.sort((a,b) => ( a.email > b.email ) ? comparasion_factor : -1*comparasion_factor );
         }
 
-        men.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? ((a.power > b.power) ? 1 : -1) : -1 )
+        men.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? ((a.email > b.email) ? 1 : -1) : -1 )
 
 
