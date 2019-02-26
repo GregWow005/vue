@@ -54,9 +54,9 @@ export default {
             //this.$eventbus.$emit('setFilterTasks',event.target.dataset.filter);
         },
         // remove task  and emit event to remove complete task in Filte component
-        removeCompletedTask(){
+        /* removeCompletedTask(){
             this.$eventbus.$emit('removeCompletedTask');
-        }
+        } */
     }, 
 }
 </script>
