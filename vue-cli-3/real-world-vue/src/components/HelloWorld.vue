@@ -2,13 +2,13 @@
   <div>
         <table>
             <thead>
-                <tr>
-                    <th v-for="column in columns" class="text-capitalize">{{column}}<span class="arrow asc"></span></th>
+                <tr class="js-table-head">
+                    <th v-for="column in columns" class="text-capitalize js-head-column" :data-order="column"  @click="setOrder" data-orderdirection="asc">{{column}}<span class="arrow asc"></span></th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="user in users">
-                    <td>{{user.name.first + ' ' +  user.name.last}}</td>
+                <tr v-for="user in display_users">
+                    <td>{{user.name.last + ' ' +  user.name.first}}</td>
                     <td>{{user.email}}</td>
                 </tr>
             </tbody>
@@ -17,18 +17,36 @@
 </template>
 
 <script>
-import {mapState,mapActions} from 'vuex';
+import {mapState,mapActions,mapGetters, mapMutations} from 'vuex';
 export default {
   name: "HelloWorld",
   props: {
     msg: String
   },
-  computed : mapState(['saludo','columns','users']),
+  computed : {
+      ...mapState(['saludo','columns','display_users']),
+      
+
+  },
   methods: {
-    ...mapActions(['getUsers']),
+      ...mapActions(['getUsers']),
+      ...mapMutations(['setOrderData']),
     createdComponent(){
         this.getUsers();
     },
+    setOrder(event){
+            var data_set_element = event.target.dataset;
+            if(data_set_element.orderdirection === "asc"){
+                data_set_element.orderdirection = "desc";
+            } else {
+                data_set_element.orderdirection = "asc";
+            }
+            this.setOrderData({
+                order : event.target.dataset.order,
+                orderdirection : event.target.dataset.orderdirection,
+            }) 
+            //console.log('COMMENT: ', event.target.dataset.order);
+      },
   },
   mounted() {
     console.log('CREATED: ');
