@@ -9,7 +9,7 @@ const app = new Vue({
 })
 
 
-const = new Vuw.Store({
+const = new Vue.Store({
     state : {},
     // Update de Vuex state
     actions : {},

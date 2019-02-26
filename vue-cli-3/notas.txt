@@ -1,0 +1,94 @@
+Crear proyecto VUE con cli-3
+
+instalar la nueva versión del cli   
+    -> npm install -g @vue/cli
+crear el nuevo proyecto
+    ->vue create 'nombre_del_proyecto'
+Seleccionar opciones
+    - Con el las flechas moverse hacia arriba y hacia abajo
+    - Seleccionar: Manually select features
+    - moverse con las flechas hasta la caracteristica deseada y presionar el espaciador. 
+        Seleccionar: Babel, Router, Vuex, Linter/Formatter
+    - Seleccionar ESLint + Prettier
+    - Seleccionar: Lint on save
+    - Seleccionar: In dedicated config files
+    - En: Save this as a present for future project (Y/N) -> N
+    - Use NPM
+- Mover al directorio 'nombre_del_proyecto'
+- Ejecutar: npm run serve
+
+
+---------------------
+
+VUE GRID
+
+X - Columnas
+    - Cabecera
+    - Nombre
+    - Apellido
+    - Activo
+Filtros - Ordenación
+    - Nombre
+    - Apellido
+    - Estado
+Search
+    - Nombre
+    - Apellidos
+
+Implementación
+
+- Componente Search
+- Componente GRID
+- Store
+
+
+Funciones
+    - Search
+
+        let men = [
+            { name: 'Chuck Norris', power: Infinity },
+            { name: 'Bruce Lee', power: 9000 },
+            { name: 'Jackie Chan', power: 7000 },
+            { name: 'Jet Li', power: 8000 }
+        ]
+
+        let filter_men = [];
+
+        filter_men = [];
+        var regexp = /li/gi;
+        for (var i = 0, len = men.length; i < len; i++) {
+            if(men[i].name.search(regexp) !== -1){
+                filter_men.push(men[i]);
+            }
+            console.log(men[i],i,men[i].name.search(regexp));
+        }
+
+        console.log('filter_men',filter_men);
+
+    - Ordenación
+        By name
+        men.sort((a,b) => ( a.name > b.name ) ? 1 : -1 );
+        By power
+        men.sort((a,b) => ( a.power > b.power ) ? 1 : -1 );
+
+        var  comparasion_factor;
+        var  order = 'desc';
+        comparasion = 'power';
+
+        if(order === 'asc'){
+            comparasion_factor = 1;
+        } else {
+            comparasion_factor = -1;
+        }
+
+        if(comparasion === 'name'){
+            console.log(comparasion,comparasion_factor);
+            men.sort((a,b) => ( a.name > b.name ) ? comparasion_factor : -1*comparasion_factor );
+        } else {
+            console.log(comparasion,comparasion_factor);
+            men.sort((a,b) => ( a.power > b.power ) ? comparasion_factor : -1*comparasion_factor );
+        }
+
+        men.sort((a, b) => (a.name > b.name) ? 1 : (a.name === b.name) ? ((a.power > b.power) ? 1 : -1) : -1 )
+
+
