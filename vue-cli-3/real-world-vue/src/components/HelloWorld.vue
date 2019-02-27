@@ -3,7 +3,7 @@
         <table>
             <thead>
                 <tr class="js-table-head">
-                    <th v-for="column in columns" class="text-capitalize js-head-column" :data-order="column"  @click="setOrder" data-orderdirection="asc">{{column}}<span class="arrow asc"></span></th>
+                    <th v-for="column in columns" class="text-capitalize js-head-column" :data-order="column"  @click="setOrder" >{{column}}<span class="js-arrow arrow asc"></span></th>
                 </tr>
             </thead>
             <tbody>
@@ -29,23 +29,42 @@ export default {
 
   },
   methods: {
-      ...mapActions(['getUsers']),
-      ...mapMutations(['setOrderData']),
+    ...mapActions(['getUsers']),
+    ...mapMutations(['setOrderData']),
     createdComponent(){
         this.getUsers();
     },
     setOrder(event){
-            var data_set_element = event.target.dataset;
-            if(data_set_element.orderdirection === "asc"){
-                data_set_element.orderdirection = "desc";
-            } else {
-                data_set_element.orderdirection = "asc";
-            }
-            this.setOrderData({
-                order : event.target.dataset.order,
-                orderdirection : event.target.dataset.orderdirection,
-            }) 
-            //console.log('COMMENT: ', event.target.dataset.order);
+        var parent = event.target.closest("tr.js-table-head");
+        // Create alias for this function
+        var children = parent.querySelectorAll("th.js-head-column");
+        for (let index = 0; index < children.length; index++) {
+            children[index].classList.remove("active");
+        }
+        event.target.classList.add("active");
+        var children_arrow = event.target.querySelector('th span.js-arrow');
+        var orderdirection;
+        //event.target.classList.add('selected');
+        if(children_arrow.classList.contains('asc')){
+            children_arrow.classList.remove('asc');
+            children_arrow.classList.add('dsc');
+            orderdirection = "dsc";
+        } else {
+            children_arrow.classList.remove('dsc');
+            children_arrow.classList.add('asc');
+            orderdirection = "asc";
+        }
+        this.setOrderData({
+            order : event.target.dataset.order,
+            orderdirection : orderdirection,
+        }) 
+        /* var data_set_element = event.target.dataset;
+        if(data_set_element.orderdirection === "asc"){
+            data_set_element.orderdirection = "dsc";
+        } else {
+            data_set_element.orderdirection = "asc";
+        } */
+        //console.log('COMMENT: ', event.target.dataset.order);
       },
   },
   mounted() {

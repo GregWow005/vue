@@ -44,6 +44,44 @@ How to use
                 }
             });
 
+    - state : {
+        // "BBDD" - Contiene claves que almacenan daticos
+        user : [{name:"Pter",email:"pter@pter.es"},{name:"Terp",email:"terp@terp.es"}],
+    }
+    - getters : {
+        // Contiene métodos que actuan sobre los elemento de la "BBDD" pero no los modifican. Atención al parametro 'state'
+        method : (state) => {
+            // your body function here
+        }
+    }
+    - mutations : {
+        // Métodos sincronos que modifican las "BBDD". 
+        // Atención a los parametros que reciben los métodos (state,paylod)
+        methos : (state,payload) => {
+            // your body function here
+        }
+    },
+    - actions : {
+        // Métodos asíncronos que emiten eventos sobre las mutaciones. NO modifican datos de la "BBDD"
+        // Atención al parametro 'context'
+        // La cominicación con las Mutations es a traves de: context.commit("SetDataUsers", fake_data);
+        
+        getUsers: async context => {
+            var url = "https://randomuser.me/api/?results=5";
+            try {
+                let response = await fetch(url);
+                let data = await response.json();
+                localStorage.setItem("fakedata", JSON.stringify(data));
+                context.commit("SetDataUsers", data);
+            } catch (err) {
+                // catches errors both in fetch and response.json
+                var fake_data = JSON.parse(localStorage.getItem("fakedata"));
+                context.commit("SetDataUsers", fake_data);
+                console.log("Upsss! ", err, " Using fake data");
+            }
+        }
+    }
+
 MAPSTATE
 -Tiene acceso al estado del store (VIP - Importar el objeto 'store' en la instacia principal)
 -Como usarlo?
