@@ -20,9 +20,9 @@ export default {
 		// Init values
 		actual_page: 1,
 		init_page: 1,
-		visible_elements: 6,
-		total_elements: 120,
-		visible_pages: 5, // always odd
+		visible_elements: 0,
+		total_elements:0,
+		visible_pages:0, // always odd
 		range: 0,
 		pages: [],
 		total_pages : 0,
@@ -124,16 +124,37 @@ export default {
 		
   },
   created() {
+	// Set data pagination
+	this.total_elements = 15; // Data from DDBB
+	this.visible_elements = 6; // Set data for visualize
+	this.visible_pages = 5; // Set data for visualize
+	/**
+	 * Casuistica
+	 *  - El número total de elementos es impar y al calcular el numero de total de elementos el total de páginas sale con decimal
+	 *  - El numero total de elementos es menor que el número de elementos visibles o de páginas visibles
+	 *  
+	 */
+
+	if(this.total_elements < this.visible_elements) {
+		this.visible_elements = this.total_elements;
+	}
+	this.total_pages = Math.ceil(this.total_elements/ this.visible_elements);
+
+	if(this.total_pages < this.visible_pages){
+		this.visible_pages = this.total_pages;
+	}
+	// ojo al rango
 	// Set range
+	this.range = (this.visible_pages - 1) / 2;
+	// Fill array pages
 	for(let i = 1; i<= this.total_elements; i++){
 		this.pages.push(i);
 	}
-	this.range = (this.visible_pages - 1) / 2;
-	this.total_pages = this.pages.length / this.visible_elements;
+
 	this.paintPagination();
 	//this.computedAlgo();
 	//this.getUsers(this.actual_page,this.visible_elements);
-  },
+	},
 };
 </script>
 
