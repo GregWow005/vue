@@ -1,0 +1,155 @@
+Total elementos - 120
+Elementos por página - 6
+
+
+Páginación
+
+Número total de páginas - 20
+Número de páginas visibles - 5
+Página actual marcada
+
+
+prev 1 2 3 4 5 next 
+
+prev 16 17 18 19 20 next
+
+External Data
+
+total_elements = 120;
+elements_by_page = 76;
+
+
+total_pages = total_elements / elements_by_page;
+visibles_pages = 5;
+actual_page;
+
+-------
+Funciones
+- Inicio
+    - Obtener los primeros seis elementos
+- Botón Next
+    - Obtener los siguientes seis
+    - actual_page = actual_page + 1;
+    - Limites
+         - Número actual de página mayor o igual que el total menos las páginas visibles NO cambia las páginas mostradas (Las cinco últimas)
+         - Sí la página actual es 20 el botón "next" queda deshabiltado
+- Botón Prev
+    - Obtener los seis previos
+    - actual_page = actual_page - 1;
+     - Límites
+        - Número actual de la página menor o igual que el número de páginas vsibles NO cambias las páginas mostradas (Las cinco primeras)
+        - Sí la página actual es 1 el botón "prev" queda deshabiltado
+- Cambiar el estilo de la página actual
+
+
+var numbers = [];
+for(let i = 1; i<=120; i++){
+    numbers.push(i);
+}
+console,log(numbers);
+
+var MyPagination = (function(){
+    var actual_page = 1;
+    var init_page = 1;
+    var visible_elements = 6;
+    var total_elements = 120;
+    var visibles_pages = 5; // Siempre impares
+    var rango = (visibles_pages - 1) / 2
+    var pages = [];
+    var total_pages;
+    var get_next = function(){
+        actual_page = actual_page + 1;
+        if(actual_page >= total_pages){
+            actual_page = total_pages;
+            // disabled button 'next'
+        }
+        paint_pagination();
+        console.log("Get Next");
+    };
+    var get_page = function(page){
+        actual_page = page;
+        if(actual_page >= total_pages){
+            actual_page = total_pages;
+            // disabled button 'next'
+        } else if(actual_page <= init_page){
+            actual_page = init_page;
+            // disabled button 'prev'
+        }
+        paint_pagination();
+    };
+    var get_prev = function(){
+        actual_page = actual_page - 1;
+        if(actual_page <= init_page){
+            actual_page = init_page;
+            // disabled button 'prev'
+        }
+        paint_pagination();
+        console.log("Get Prev");
+    };
+    var paint_pagination = function(){
+        let index_pagination = set_limits_pagination();
+        for(let i = index_pagination; i < index_pagination + visibles_pages; i++){
+            if(i === actual_page){
+                console.log('"' + i + '"' );
+            } else {
+                console.log(i);
+            }
+        }
+    };
+    var set_limits_pagination = function(){
+        console.log("set_limits_pagination " + actual_page,total_pages);
+        let init_pagination;
+        /**
+        * actual > rango + 1 -> inicio es actual - rango
+        * si no -> inicio es 1
+        * actual >= total - rango -> inicio es: total - visibles
+        */
+        if(actual_page < rango + 1 ){
+            init_pagination = init_page;
+        } else if( actual_page >= total_pages - rango){
+            init_pagination = total_pages - visibles_pages + 1;
+        } else {
+            init_pagination = actual_page - rango;
+        }
+
+        return init_pagination;
+    };
+    var get_total_pages = function(){
+        console.log(total_pages);
+    };
+    var init = function(){
+        for(let i = 1; i<=total_elements; i++){
+            pages.push(i);
+        }
+        total_pages = pages.length / visible_elements;
+        return {
+            get_next            : get_next,
+            get_prev            : get_prev,
+            get_page            : get_page,
+            get_total_pages     : get_total_pages,
+            paint_pagination    : paint_pagination
+        }
+    };
+    return {
+        init        : init
+    }
+})().init();
+
+/*1 - 1 2 3 4 5
+2 - 1 2 3 4 5
+3 - 1 2 3 4 5
+4 - 2 3 4 5 6
+
+visibles 5
+rango = (visibles - 1 )/ 2
+actual > rango + 1 -> inicio es actual - rango
+si no -> inicio es 1
+actual >= total - rango -> inicio es: total - visibles
+
+
+16 - 14 15 16 17 18
+17 - 15 16 17 18 19
+18 - 16 17 18 19 20
+19 - 16 17 18 19 20
+20 - 16 17 18 19 20
+*/
