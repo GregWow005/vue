@@ -1,0 +1,42 @@
+Chat
+ - Mensaje y destinatario (Cuatro destinatarios)
+ - Cuadro central donde escribir el texto y desplegable con usuarios
+ - Funcionamiento
+    - Se escribe un texto en el textarea central y se selecciona el destinatario
+        - Guardar en Historico
+        - Limpiar textarea
+        - Añadir Mensaje a la cola de mensajes sin leer del destinatario (Sólo los mensaje sin leer)
+        - Crear select para simular sessión de usuario activo
+        - Haciendo click en el el mensaje queda leido si eres el usuarios de la sesión y lees tus mensajes
+    - Opciones
+        - Respuesta en cada hilo
+        - Historico de chats por destinatario 
+Implementación Vue
+    - Usar VUEX
+        - Historico general
+            - Estructura
+                - Uid
+                - Fecha
+                - Emisor
+                - Receptor
+                - Mensaje
+                - Estado
+                - Thread
+        - Historico por destinatario - Filtrar Historico - computed properties - Una por usuario
+        - Usuarios
+        - Usuario Sesion
+
+    - Componentes
+        - Chat 
+            - textarea
+            - Acciones
+                - editar
+                - cancelar
+                - guardar
+        - Desplegable - destinatarios -- Componente Usuarios
+        - Desplegable - usuario sessión -- Componente Usuarios
+        - Chat individual 
+            - Componente Datos usuario
+            - Componente hilo
+                - Histórico usuario
+                - Conversación pendiente
