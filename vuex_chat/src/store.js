@@ -55,11 +55,18 @@ const store = new Vuex.Store({
       node.uid = data.uid;
       node.message = data.message;
       node.date = save_date;
-      node.emisor = state.user_session;
-      node.receiver = state.user_target;
+      node.emisor_id = state.user_session.id;
+      node.receiver_id = state.user_target.id;
+      node.emisor_name = state.user_session.name;
+      node.receiver_name = state.user_target.name;
       node.status = "new";
       node.uid_thread = "";
       state.historic.push(node);
+
+      let result = state.historic.filter(
+        item => item.emisor_id === state.user_session.id
+      );
+      console.log("RESULT: ", result);
     }
   },
   actions: {}
