@@ -3,7 +3,7 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     users: [
       { id: 1, name: "Pter", email: "pter@pter.es" },
@@ -11,9 +11,10 @@ export default new Vuex.Store({
       { id: 3, name: "Ripe", email: "pter@pter.es" },
       { id: 4, name: "Frida", email: "idaf@fred.es" }
     ],
+    actual_message: "",
     user_session: "",
     user_target: "",
-    historic: {}
+    historic: []
   },
   getters: {
     getUsers: state => {
@@ -30,14 +31,38 @@ export default new Vuex.Store({
       } else {
         state.user_session = this_user;
       }
-      /* state.user_target = state.users.filter((item) => {
-            //item.id === data.id
-            if(item.id === data.id){
-                console.log('item: ', item.id);
-                return item;
-            }
-        }) */
+    },
+    setMessage: (state, data) => {
+      state.actual_message = data.message;
+      store.commit("createHistoricNode", data);
+    },
+    createHistoricNode: (state, data) => {
+      /**
+       * JSON historic
+       * - Uid
+       * - Fecha
+       * - Emisor
+       * - Receptor
+       * - Mensaje
+       * - Estado
+       * - Uid Thread
+       */
+      //state.historic =
+      console.log("createHistoricNode: ", data);
+      let date = new Date();
+      var save_date = date.getTime();
+      let node = new Object();
+      node.uid = data.uid;
+      node.message = data.message;
+      node.date = save_date;
+      node.emisor = state.user_session;
+      node.receiver = state.user_target;
+      node.status = "new";
+      node.uid_thread = "";
+      state.historic.push(node);
     }
   },
   actions: {}
 });
+
+export default store;

@@ -3,10 +3,10 @@ Chat
  - Cuadro central donde escribir el texto y desplegable con usuarios
  - Funcionamiento
     - Se escribe un texto en el textarea central y se selecciona el destinatario
-        - Guardar en Historico
-        - Limpiar textarea
+        - Guardar en Historico -- Done
+        - Limpiar textarea -- Done
         - Añadir Mensaje a la cola de mensajes sin leer del destinatario (Sólo los mensaje sin leer)
-        - Crear select para simular sessión de usuario activo
+        - Crear select para simular sessión de usuario activo -- Done
         - Haciendo click en el el mensaje queda leido si eres el usuarios de la sesión y lees tus mensajes
     - Opciones
         - Respuesta en cada hilo

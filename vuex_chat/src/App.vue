@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import TemplateCmp from "./components/TemplateCmp.vue";
 
+import TemplateCmp from "./components/TemplateCmp.vue";
 export default {
   name: "app",
   components: {
