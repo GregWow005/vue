@@ -45,7 +45,7 @@ export default {
     width: 25%;
     border: 1px solid green;
     box-sizing: border-box;
-    height: 100px;
+    min-height: 100px;
 }
 .wrapper-message-area {
     display: flex;
@@ -69,5 +69,9 @@ li {
 }
 a {
   color: #42b983;
+}
+hr {
+    width: 50%;
+    border: .5px dashed green
 }
 </style>

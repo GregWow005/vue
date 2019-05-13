@@ -57,7 +57,7 @@ How to use
     - mutations : {
         // Métodos sincronos que modifican las "BBDD". 
         // Atención a los parametros que reciben los métodos (state,paylod)
-        methos : (state,payload) => {
+        methods : (state,payload) => {
             // your body function here
         }
     },

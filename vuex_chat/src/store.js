@@ -20,18 +20,31 @@ const store = new Vuex.Store({
     getUsers: state => {
       // your body function here
       return state.users;
-    }
+    },
+    getUserChats: (state, data) => {
+        return state.historic;
+        /* console.log("dagetUserChatta: ", state, data);
+        if(state.historic.length > 0 ){
+          console.log('Existen chats');
+          let result = state.historic.filter(
+            item => parseInt(item.receiver_id) === parseInt(data.id) && item.status === "new"
+          );
+          //console.log('RESULT: ', result);
+          return result;
+        } */
+      }
   },
   mutations: {
-    setUser: (state, data) => {
-      console.log("data: ", state, data);
-      let this_user = state.users.find(item => item.id === data.id);
-      if (data.typeuser === "target") {
-        state.user_target = this_user;
-      } else {
-        state.user_session = this_user;
+    /* getUserChat: (state, data) => {
+      console.log("dagetUserChatta: ", state, data);
+      if(state.historic.length > 0 ){
+        console.log('Existen chats');
+        let result = state.historic.filter(
+          item => parseInt(item.receiver_id) === parseInt(data.id) && item.status === "new"
+        );
+        console.log('RESULT: ', result);
       }
-    },
+    }, */
     setMessage: (state, data) => {
       state.actual_message = data.message;
       store.commit("createHistoricNode", data);
@@ -48,25 +61,25 @@ const store = new Vuex.Store({
        * - Uid Thread
        */
       //state.historic =
-      console.log("createHistoricNode: ", data);
+      //console.log("createHistoricNode: ",state, data);
       let date = new Date();
       var save_date = date.getTime();
       let node = new Object();
       node.uid = data.uid;
       node.message = data.message;
       node.date = save_date;
-      node.emisor_id = state.user_session.id;
-      node.receiver_id = state.user_target.id;
-      node.emisor_name = state.user_session.name;
-      node.receiver_name = state.user_target.name;
+      node.emisor_id = data.user_session.value;
+      node.receiver_id = data.user_target.value;
+      node.emisor_name = data.user_session.text;
+      node.receiver_name = data.user_target.text;
       node.status = "new";
       node.uid_thread = "";
       state.historic.push(node);
 
-      let result = state.historic.filter(
-        item => item.emisor_id === state.user_session.id
-      );
-      console.log("RESULT: ", result);
+      /* let result = state.historic.filter(
+        item => item.emisor_id === state.user_session.value
+      ); */
+      //console.log("RESULT: ", node);
     }
   },
   actions: {}
