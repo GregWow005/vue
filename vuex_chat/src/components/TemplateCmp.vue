@@ -15,7 +15,7 @@
             </div>
         </section>
         <section class="col flex-row">
-            <div v-for="user in getUsers" :data-id="user.id" class="flex-row-block chat-block js-chat-block">{{user.name}}
+            <div v-for="user in getUsers" :data-userid="user.id" class="flex-row-block chat-block js-chat-block">{{user.name}}
                 <div class="js-chat-historic">
                 </div>
             </div>

@@ -40,12 +40,13 @@ export default {
                         item => parseInt(item.receiver_id) === parseInt(event.target.value) && item.status === "new"
                     );
                     if(result_final.length > 0){
-                        this.setChatinDom(result_final);
+                        this.setChatinDom(result_final,event.target.value);
                     }
                 }
             }
         },
-        setChatinDom(chats){
+        setChatinDom(chats,user_id){
+            console.log('user_id: ', user_id);
             let template;
             template = `<h3>Nuevos mensajes</h3>`;
             for (let index = 0; index < chats.length; index++) {
@@ -61,7 +62,13 @@ export default {
                     </p>
                 `;  
             }
-            document.querySelectorAll('.js-chat-historic')[0].innerHTML = template;
+            let historic_chats = document.querySelectorAll('.js-chat-historic');
+            for (let index = 0; index < historic_chats.length; index++) {
+                let item = historic_chats[index];
+                item.innerHTML = "";
+                console.log('COMMENT: ', item); 
+            }
+            document.querySelectorAll('[data-userid="' + user_id + '"] .js-chat-historic')[0].innerHTML = template;
         }
     }
 }
