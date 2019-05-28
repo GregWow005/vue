@@ -33,12 +33,19 @@ export default {
         }, */
         getHistoricChat(event){
             let type_user = event.target.getAttribute('data-typeuser');
+            let historic_chats = document.querySelectorAll('.js-chat-historic');
+            for (let index = 0; index < historic_chats.length; index++) {
+                let item = historic_chats[index];
+                item.innerHTML = "";
+                console.log('COMMENT: ', item); 
+            }
             if(type_user === "session"){
                let result = this.getUserChats({id:parseInt(event.target.value),typeuser:type_user});
                if(result.length > 0 ){
                     let result_final = result.filter(
                         item => parseInt(item.receiver_id) === parseInt(event.target.value) && item.status === "new"
                     );
+                    console.log('result_final: ', result_final);
                     if(result_final.length > 0){
                         this.setChatinDom(result_final,event.target.value);
                     }
@@ -55,18 +62,15 @@ export default {
                 }
                 const chat = chats[index];
                 console.log('chat: ', chat.emisor_name, chat.message, chat.uid); 
+                let chat_date = new Date(chat.date);
+                let chat_date_locale = chat_date.toLocaleString();
                 template = template +  `
                     <p>
                         <div>Emisor: ${chat.emisor_name} </div>
                         <div>Mensaje: ${chat.message}</div>
+                        <h6>Hora: ${chat_date_locale}</h6>
                     </p>
                 `;  
-            }
-            let historic_chats = document.querySelectorAll('.js-chat-historic');
-            for (let index = 0; index < historic_chats.length; index++) {
-                let item = historic_chats[index];
-                item.innerHTML = "";
-                console.log('COMMENT: ', item); 
             }
             document.querySelectorAll('[data-userid="' + user_id + '"] .js-chat-historic')[0].innerHTML = template;
         }
