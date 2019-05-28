@@ -6,9 +6,8 @@
 </template>
 
 <script>
-import { uuid } from 'vue-uuid'; 
-import {mapState} from 'vuex';
-import {mapGetters, mapMutations,mapActions} from 'vuex';
+import { uuid } from 'vue-uuid';
+import  {mapMutations} from 'vuex';
 export default {
     methods: {
         ...mapMutations(['setMessage']),

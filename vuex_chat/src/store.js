@@ -23,28 +23,9 @@ const store = new Vuex.Store({
     },
     getUserChats: (state, data) => {
         return state.historic;
-        /* console.log("dagetUserChatta: ", state, data);
-        if(state.historic.length > 0 ){
-          console.log('Existen chats');
-          let result = state.historic.filter(
-            item => parseInt(item.receiver_id) === parseInt(data.id) && item.status === "new"
-          );
-          //console.log('RESULT: ', result);
-          return result;
-        } */
       }
   },
   mutations: {
-    /* getUserChat: (state, data) => {
-      console.log("dagetUserChatta: ", state, data);
-      if(state.historic.length > 0 ){
-        console.log('Existen chats');
-        let result = state.historic.filter(
-          item => parseInt(item.receiver_id) === parseInt(data.id) && item.status === "new"
-        );
-        console.log('RESULT: ', result);
-      }
-    }, */
     setMessage: (state, data) => {
       state.actual_message = data.message;
       store.commit("createHistoricNode", data);
