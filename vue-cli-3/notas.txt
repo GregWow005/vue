@@ -5,7 +5,7 @@ instalar la nueva versión del cli
 crear el nuevo proyecto
     ->vue create 'nombre_del_proyecto'
 Seleccionar opciones
-    - Con el las flechas moverse hacia arriba y hacia abajo
+    - Con las flechas moverse hacia arriba y hacia abajo
     - Seleccionar: Manually select features
     - moverse con las flechas hasta la caracteristica deseada y presionar el espaciador. 
         Seleccionar: Babel, Router, Vuex, Linter/Formatter
